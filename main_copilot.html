@@ -1,0 +1,33 @@
+<body>
+  <!--建立一個按鈕和時間顯示區-->
+  <!--按下按鈕後表示時間顯示區時間同步時鐘時間，再按一次按鈕則時間停止-->
+  <h1>AI 小練習</h1>
+  <button id="toggleButton" onclick="toggleTime()">顯示時間</button>
+  <p id="time">時間顯示</p>
+  <script>
+    let timer = null;
+
+    function toggleTime() {
+      const button = document.getElementById("toggleButton");
+      const timeDisplay = document.getElementById("time");
+
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+        button.textContent = "顯示時間";
+      } else {
+        timer = setInterval(() => {
+          const now = new Date();
+          const formatted = now.toLocaleString('zh-TW');
+          //timeDisplay.textContent = "現在時間：" + formatted;
+          document.getElementById("time").textContent = "現在時間：" + formatted;
+        }, 1000);
+        button.textContent = "停止時間";
+      }
+    }
+  </script>
+
+
+
+
+</body>
